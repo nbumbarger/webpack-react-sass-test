@@ -1,4 +1,5 @@
 var process = require('process');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 function getEntrySources(sources) {
   if (process.env.NODE_ENV !== 'production') {
@@ -11,29 +12,42 @@ function getEntrySources(sources) {
 
 
 
-module.exports = function() {
-  return {
-    entry: {
-      helloWorld: getEntrySources([
-        './js/app'
-      ])
-    },
-    output: {
-      publicPath: 'http://localhost:8080/',
-      filename: './public/[name].js'
-    },
-    module: {
-      loaders: [
-        {
-          test: /\.js$/,
-          loaders: [
-            'react-hot-loader',
-            'jsx-loader',
-            'babel-loader?presets[]=latest&presets[]=react'
-          ],
-          exclude: /node_modules/
-        }
-      ]
-    }
-  };
+module.exports = {
+  entry: {
+    bundle: getEntrySources([
+      './js/app'
+    ])
+  },
+  output: {
+    publicPath: 'http://localhost:8080/',
+    filename: './public/[name].js'
+  },
+  module: {
+    loaders: [
+      {
+        test: /\.js$/,
+        loaders: [
+          'react-hot-loader',
+          'jsx-loader',
+          'babel-loader?presets[]=latest&presets[]=react'
+        ],
+        exclude: /node_modules/
+      },
+      {
+        test: /\.scss$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            'css-loader',
+            'sass-loader'
+          ]
+        })
+      }
+    ]
+  },
+  plugins: [
+    new ExtractTextPlugin('public/bundle.css', {
+      allChunks: true
+    })
+  ]
 };

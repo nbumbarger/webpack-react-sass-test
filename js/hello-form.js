@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import HelloSayer from './hello-sayer';
+require('../sass/hello-form.scss');
 
 class HelloForm extends Component {
   constructor(props) {
@@ -7,13 +8,12 @@ class HelloForm extends Component {
     this.state = {
       name: 'World'
     };
-    this.onChange = this.onChange.bind(this);
   }
 
   render () {
     return (
       <div className='hello-form'>
-        <input type='text' value={this.state.name} onChange={this.onChange} />
+        <input type='text' value={this.state.name} onChange={this.onChange.bind(this)} />
         <HelloSayer name={this.state.name} />
       </div>
     )
