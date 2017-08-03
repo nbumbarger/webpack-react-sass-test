@@ -28,7 +28,8 @@ module.exports = function() {
           test: /\.js$/,
           loaders: [
             'react-hot-loader',
-            'jsx-loader'
+            'jsx-loader',
+            'babel-loader?presets[]=latest&presets[]=react'
           ],
           exclude: /node_modules/
         }

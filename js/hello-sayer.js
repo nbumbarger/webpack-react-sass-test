@@ -1,11 +1,11 @@
-var React = require('react');
+import React, { Component } from 'react';
 
-var HelloSayer = React.createClass({
-  render: function () {
+class HelloSayer extends Component {
+  render () {
     return (
       <p>Hello {this.props.name}!</p>
     )
-  }
-});
+  };
+}
 
-module.exports = HelloSayer;
+export default HelloSayer;

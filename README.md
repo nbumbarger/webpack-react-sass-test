@@ -6,3 +6,13 @@ Build using the command
 ```
 yarn build
 ```
+
+To develop, use
+```
+yarn start
+```
+to start the pass-through server which enables hot-reload on local networks, and
+```
+yarn watch
+```
+to start the development server
