@@ -1,11 +1,11 @@
 var React = require('react');
-var HelloSayer  = require('./hello');
+var HelloSayer  = require('./hello-sayer');
 
 
 var HelloForm = React.createClass({
   getInitialState: function() {
     return {
-      name: 'world'
+      name: 'World'
     };
   },
   
