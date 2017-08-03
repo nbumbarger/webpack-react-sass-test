@@ -12,11 +12,20 @@ module.exports = function() {
   return {
     entry: {
       helloWorld: getEntrySources([
-        './js/helloworld'
+        './js/app'
       ])
     },
     output: {
       filename: './public/[name].js'
+    },
+    module: {
+      loaders: [
+        {
+          test: /\.js$/,
+          loader: 'jsx-loader',
+          exclude: /node_modules/
+        }
+      ]
     }
   };
 };

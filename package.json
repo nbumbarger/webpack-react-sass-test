@@ -11,6 +11,9 @@
     "serve": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js --progress --colors"
   },
   "devDependencies": {
+    "jsx-loader": "^0.13.2",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
     "webpack": "^3.4.1",
     "webpack-dev-server": "^2.6.1"
   }
